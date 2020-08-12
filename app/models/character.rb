@@ -4,21 +4,11 @@ class Character < ApplicationRecord
   has_many :equipments
   has_many :skills
 
-# SELECT c.name AS character_name, i.name, i.description, c.id as character_id FROM characters c
-# INNER JOIN inventories i ON i.character_id = c.id
-# ORDER BY character_id DESC
-
 def self.set_inventory(id)
   select("characters.name AS character_name, i.id, i.name, i.description, characters.id as character_id")
   .joins("INNER JOIN inventories i ON i.character_id = characters.id")
   .where("i.character_id = #{id}")
 end
-
-# select armor 
-# SELECT characters.name AS character_name, characters.id as character_id, e.name, 
-# e.description, e.armor_class,e.armor FROM characters 
-# INNER JOIN equipment e ON e.character_id = characters.id
-# WHERE e.armor = true
 
  def self.set_armor(id)
   select("characters.name AS character_name, characters.id as character_id, e.name, e.id, e.character_id, 
@@ -27,22 +17,12 @@ end
   .where("e.armor = true AND e.character_id = #{id}")
  end
 
-# select weapons
-# SELECT characters.name AS character_name, characters.id as character_id, e.name, 
-# e.description, e.damage, e.range, e.weapon FROM characters 
-# INNER JOIN equipment e ON e.character_id = characters.id
-# WHERE e.weapon = true
-
 def self.set_weapons(id)
   select("characters.name AS character_name, characters.id as character_id, e.name, e.id, e.character_id,
           e.description, e.damage, e.range, e.weapon")
   .joins("INNER JOIN equipment e ON e.character_id = characters.id")
   .where("e.weapon = true AND e.character_id = #{id}")
 end
-
-# SELECT characters.name AS character_name, characters.id as character_id, 
-# s.strength, s.dexterity, s.constitution, s.intelligence, s.wisdom, s.charisma, s.speed FROM characters 
-# INNER JOIN skills s ON s.character_id = characters.id
 
 def self.set_skills(id)
   select("characters.name AS character_name, characters.id as character_id, s.id, s.character_id,

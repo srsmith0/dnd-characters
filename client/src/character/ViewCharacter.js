@@ -18,6 +18,7 @@ useEffect(() => {
   getChar();
 }, [])
 
+//need to pass props to all functions to call
 function getChar () {
   axios.get(`/api/users/1/characters/2`)
   .then((res) => {
