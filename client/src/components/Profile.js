@@ -27,12 +27,10 @@ const Profile = () => {
   }, [user.id, user.email, user.password])
 
   const handleSubmit = (e) => {
-    // prevent refresh
     e.preventDefault()
 
-    axios.put("/api/profile", {id: user.id, email, password}) //Post = create new, Put = replaces known values
+    axios.put("/api/profile", {id: user.id, email, password}) 
       .then(res => {
-        // update auth context means update global state
         user.handleUpdatePersonalInfo(profile)
       })
   }
