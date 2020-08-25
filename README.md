@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I have this on display to show the work that I completed during the 8 hour hackathon.  I completed all of the backend work including the SQL functions within the Character model.  There are many associations for the models and I created the functions so that we could display a Character's armor, weapons, and inventory.  
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The majority of the CRUD actions are broken.
